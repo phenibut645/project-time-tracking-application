@@ -17,11 +17,11 @@
         </style>
       </head>
       <body>
-        <h2>Отчёты по времени</h2>
+        <h2>Aruanded aja järgi</h2>
         <table>
           <tr>
-            <th>ID</th><th>Пользователь</th><th>Роль</th>
-            <th>Статус</th><th>Часы</th><th>Дата входа</th>
+            <th>ID</th><th>Kasutaja</th><th>Roll</th>
+            <th>Staatus</th><th>Kellad</th><th>Sisenemise kuupäev</th>
           </tr>
 
           <xsl:for-each select="/reports/report[
