@@ -124,6 +124,9 @@
             <button type="submit">Lisa aruanne</button>
           </form>
         </div>
+        <form method="get" action="../php/export_json.php" style="margin-bottom: 20px;">
+        <button type="submit">Laadi JSON alla</button>
+        </form>
 
       </body>
     </html>
