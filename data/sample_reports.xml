@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reports generated="2025-11-12T12:00:00">
+  <report aruandeId="R-001" sisselogimisaeg="2025-11-10T09:12:00" kinnitusstaatus="pending">
+    <kasutaja id="u1" roll="developer">
+      <nimi>Ivan</nimi>
+      <perekonnanimi>Ivanov</perekonnanimi>
+      <login>ivan</login>
+    </kasutaja>
+    <dimensions>
+      <dim1 name="ProjectA">
+        <dim2 name="FeatureX">
+          <dim3 name="TaskDesign">
+            <hours>3.5</hours>
+            <date>2025-11-09</date>
+            <comment>UX design</comment>
+          </dim3>
+          <dim3 name="TaskReview">
+            <hours>1.0</hours>
+            <date>2025-11-09</date>
+            <comment>Code review</comment>
+          </dim3>
+        </dim2>
+      </dim1>
+    </dimensions>
+  </report>
+
+  <report aruandeId="R-002" sisselogimisaeg="2025-11-11T14:30:00" kinnitusstaatus="confirmed">
+    <kasutaja id="u2" roll="tester">
+      <nimi>Maria</nimi>
+      <perekonnanimi>Petrova</perekonnanimi>
+      <login>maria</login>
+    </kasutaja>
+    <dimensions>
+      <dim1 name="ProjectB">
+        <dim2 name="FeatureY">
+          <dim3 name="TaskTesting">
+            <hours>4.0</hours>
+            <date>2025-11-10</date>
+            <comment>Writing test cases</comment>
+          </dim3>
+        </dim2>
+      </dim1>
+    </dimensions>
+  </report>
+</reports>
