@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="reports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="report" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="kasutaja">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="nimi" type="xs:string"/>
+                    <xs:element name="perekonnanimi" type="xs:string"/>
+                    <xs:element name="login" type="xs:string" minOccurs="0"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                  <xs:attribute name="roll" type="xs:string" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="dimensions">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="dim1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="dim2" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="dim3" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="hours" type="xs:decimal"/>
+                                      <xs:element name="date" type="xs:date"/>
+                                      <xs:element name="comment" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="name" type="xs:string" use="required"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="aruandeId" type="xs:string" use="required"/>
+            <xs:attribute name="sisselogimisaeg" type="xs:dateTime" use="required"/>
+            <xs:attribute name="kinnitusstaatus" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="generated" type="xs:dateTime" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
