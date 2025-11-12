@@ -1,38 +1,34 @@
 <?php
-$xmlFile = __DIR__ . '/../data/sample_reports.xml';
+$xmlFile = "../data/sample_reports.xml";
 
-$aruandeId = $_POST['aruandeId'] ?? '';
-$nimi = $_POST['nimi'] ?? '';
-$perekonnanimi = $_POST['perekonnanimi'] ?? '';
-$roll = $_POST['roll'] ?? '';
-$hours = $_POST['hours'] ?? 0;
-$kinnitusstaatus = $_POST['kinnitusstaatus'] ?? 'pending';
-$sisselogimisaeg = date('Y-m-d H:i:s');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $xml = simplexml_load_file($xmlFile);
 
-$dom = new DOMDocument();
-$dom->preserveWhiteSpace = false;
-$dom->formatOutput = true;
-$dom->load($xmlFile);
+    $report = $xml->addChild('report');
+    $report->addAttribute('aruandeId', $_POST['aruandeId']);
+    $report->addAttribute('sisselogimisaeg', date('Y-m-d\TH:i:s'));
+    $report->addAttribute('kinnitusstaatus', $_POST['kinnitusstaatus']);
 
-$report = $dom->createElement('report');
-$report->setAttribute('aruandeId', $aruandeId);
-$report->setAttribute('kinnitusstaatus', $kinnitusstaatus);
-$report->setAttribute('sisselogimisaeg', $sisselogimisaeg);
+    $user = $report->addChild('kasutaja');
+    $user->addAttribute('id', uniqid());
+    $user->addAttribute('roll', $_POST['roll']);
+    $user->addChild('nimi', $_POST['nimi']);
+    $user->addChild('perekonnanimi', $_POST['perekonnanimi']);
 
-$kasutaja = $dom->createElement('kasutaja');
-$kasutaja->setAttribute('roll', $roll);
+    $dimensions = $report->addChild('dimensions');
+    $dim1 = $dimensions->addChild('dim1');
+    $dim1->addAttribute('name', $_POST['project']);
+    $dim2 = $dim1->addChild('dim2');
+    $dim2->addAttribute('name', $_POST['feature']);
+    $dim3 = $dim2->addChild('dim3');
+    $dim3->addAttribute('name', $_POST['task']);
+    $dim3->addChild('hours', $_POST['hours']);
+    $dim3->addChild('date', date('Y-m-d'));
+    $dim3->addChild('comment', 'Added via form');
 
-$nimiElem = $dom->createElement('nimi', $nimi);
-$perekonnanimiElem = $dom->createElement('perekonnanimi', $perekonnanimi);
+    $xml->asXML($xmlFile);
 
-$kasutaja->appendChild($nimiElem);
-$kasutaja->appendChild($perekonnanimiElem);
-$report->appendChild($kasutaja);
-
-$hoursElem = $dom->createElement('hours', $hours);
-$report->appendChild($hoursElem);
-
-$dom->documentElement->appendChild($report);
-
-$dom->save($xmlFile);
+    header("Location: ../php/transform.php");
+    exit;
+}
 ?>

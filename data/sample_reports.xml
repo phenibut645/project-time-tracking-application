@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <reports generated="2025-11-12T12:00:00">
-  <report aruandeId="R-001" sisselogimisaeg="2025-11-10T09:12:00" kinnitusstaatus="pending">
+  <report aruandeId="R-001" sisselogimisaeg="2025-11-10T09:12:00" kinnitusstaatus="confirmed">
     <kasutaja id="u1" roll="developer">
       <nimi>Ivan</nimi>
       <perekonnanimi>Ivanov</perekonnanimi>
@@ -24,7 +24,7 @@
     </dimensions>
   </report>
 
-  <report aruandeId="R-002" sisselogimisaeg="2025-11-11T14:30:00" kinnitusstaatus="confirmed">
+  <report aruandeId="R-002" sisselogimisaeg="2025-11-11T14:30:00" kinnitusstaatus="rejected">
     <kasutaja id="u2" roll="tester">
       <nimi>Maria</nimi>
       <perekonnanimi>Petrova</perekonnanimi>

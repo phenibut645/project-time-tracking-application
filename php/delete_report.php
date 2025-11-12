@@ -1,26 +1,20 @@
 <?php
-$xmlFile = __DIR__ . '/../data/sample_reports.xml';
-$aruandeId = $_GET['aruandeId'] ?? '';
+$xmlFile = "../data/sample_reports.xml";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $aruandeId = $_POST['aruandeId'];
+    $xml = simplexml_load_file($xmlFile);
 
-if (!$aruandeId) {
-    die("Kustutatava kirje ID pole märgitud");
-}
-
-$dom = new DOMDocument();
-$dom->preserveWhiteSpace = false;
-$dom->formatOutput = true;
-$dom->load($xmlFile);
-
-$xpath = new DOMXPath($dom);
-$nodes = $xpath->query("/reports/report[@aruandeId='$aruandeId']");
-
-if ($nodes->length > 0) {
-    foreach ($nodes as $node) {
-        $node->parentNode->removeChild($node);
+    $index = 0;
+    foreach ($xml->report as $report) {
+        if ((string)$report['aruandeId'] === $aruandeId) {
+            unset($xml->report[$index]);
+            break;
+        }
+        $index++;
     }
-    $dom->save($xmlFile);
-    echo "ID-ga $aruandeId kirje on kustutatud.";
-} else {
-    echo "ID-ga $aruandeId kirjet ei leitud.";
+
+    $xml->asXML($xmlFile);
+    header("Location: ../php/transform.php");
+    exit;
 }
 ?>
