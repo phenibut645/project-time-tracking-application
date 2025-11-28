@@ -10,11 +10,14 @@ $xsl->load($xslFile);
 $proc = new XSLTProcessor();
 $proc->importStylesheet($xsl);
 
-$status = $_GET['statusFilter'] ?? '';
+$page = $_GET['page'] ?? 'reports';
+$statusFilter = $_GET['statusFilter'] ?? '';
 $search = $_GET['search'] ?? '';
 $groupBy = $_GET['groupBy'] ?? '';
 
-$proc->setParameter('', 'statusFilter', $status);
+$proc->setParameter('', 'currentDate', date('Y-m-d'));
+$proc->setParameter('', 'page', $page);
+$proc->setParameter('', 'statusFilter', $statusFilter);
 $proc->setParameter('', 'search', $search);
 $proc->setParameter('', 'groupBy', $groupBy);
 

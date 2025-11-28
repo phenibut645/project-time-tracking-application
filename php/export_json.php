@@ -1,12 +1,10 @@
 <?php
-$xmlFile = "../data/sample_reports.xml";
-$jsonFile = "../data/reports.json";
+$xmlFile = __DIR__ . '/../data/sample_reports.xml';
 
 $xml = simplexml_load_file($xmlFile);
-$json = json_encode($xml, JSON_PRETTY_PRINT);
+$json = json_encode($xml, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 header('Content-Disposition: attachment; filename="reports.json"');
 echo $json;
 exit;
-?>

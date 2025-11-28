@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<reports generated="2025-11-12T12:00:00">
-  <report aruandeId="R-001" sisselogimisaeg="2025-11-10T09:12:00" kinnitusstaatus="confirmed">
-    <kasutaja id="u1" roll="developer">
-      <nimi>Ivan</nimi>
-      <perekonnanimi>Ivanov</perekonnanimi>
-      <login>ivan</login>
-    </kasutaja>
-    <dimensions>
-      <dim1 name="ProjectA">
-        <dim2 name="FeatureX">
-          <dim3 name="TaskDesign">
-            <hours>3.5</hours>
-            <date>2025-11-09</date>
-            <comment>UX design</comment>
-          </dim3>
-          <dim3 name="TaskReview">
-            <hours>1.0</hours>
-            <date>2025-11-09</date>
-            <comment>Code review</comment>
-          </dim3>
-        </dim2>
-      </dim1>
-    </dimensions>
-  </report>
+<database generated="2025-11-12T12:00:00">
+  <users>
+    
+    
+  <user id="u692992331cc91" roleRef="r1"><firstName>David</firstName><lastName>Myrseth</lastName><login>dave</login><email>dav@gmail.com</email><phone>5644321</phone><workHours>2</workHours></user></users>
 
-  <report aruandeId="R-002" sisselogimisaeg="2025-11-11T14:30:00" kinnitusstaatus="rejected">
-    <kasutaja id="u2" roll="tester">
-      <nimi>Maria</nimi>
-      <perekonnanimi>Petrova</perekonnanimi>
-      <login>maria</login>
-    </kasutaja>
-    <dimensions>
-      <dim1 name="ProjectB">
-        <dim2 name="FeatureY">
-          <dim3 name="TaskTesting">
-            <hours>4.0</hours>
-            <date>2025-11-10</date>
-            <comment>Writing test cases</comment>
-          </dim3>
-        </dim2>
-      </dim1>
-    </dimensions>
+  <roles>
+    <role id="r1">developer</role>
+    <role id="r2">tester</role>
+  </roles>
+
+  <statuses>
+    <status id="s_confirmed">confirmed</status>
+    <status id="s_rejected">rejected</status>
+    <status id="s_pending">pending</status>
+  </statuses>
+
+  <departments>
+    <department id="d1">Frontend</department>
+    <department id="d2">QA</department>
+  </departments>
+
+  <projects>
+    
+
+    
+  <project id="p6929926280eb3" name="Femboys"><feature id="f6929926280eb4" name="Search"><task id="t6929926280eb5" name="Validation"/></feature></project><project id="p692992b74a7bd" name="Gg"><feature id="f692992b74a7be" name="Gg"><task id="t692992b74a7bf" name="Gg"/></feature></project></projects>
+
+  <reports>
+    
+
+    
+  <report id="F-001" userRef="u692992331cc91" statusRef="s_rejected" departmentRef="d1" created="2025-11-28T13:16:22+01:00">
+    <entries>
+      <entry projectRef="p6929926280eb3">
+        <hours>5</hours>
+        <date>2025-11-28</date>
+        <comment>Dave likes femboys </comment>
+      </entry>
+    </entries>
   </report>
-</reports>
+    <report id="F-002" userRef="u692992331cc91" statusRef="s_confirmed" departmentRef="d1" created="2025-11-28T13:17:06+01:00"><entries><entry projectRef="p692992b74a7bd"><hours>3</hours><date>2025-11-28</date><comment>gg</comment></entry></entries></report></reports>
+</database>
